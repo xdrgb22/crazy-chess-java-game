@@ -24,8 +24,7 @@ public class Game {
 		int turnCount = 1;
 		Scanner chessInput = new Scanner(System.in);
 		while ((pieceCollections[0].pieceArray[15].alive == true) & pieceCollections[1].pieceArray[15].alive == true) {
-			System.out.println("Current turn count is: " + turnCount);
-			System.out.println("Current board is: ");
+			System.out.println("Current turn count is: " + turnCount + "and current board is:");
 			gameBoard.printCurrentBoard();
 			turn(pieceCollections, turnCount, gameBoard, chessInput, pieceColors);
 			turnCount += 1;
@@ -38,7 +37,7 @@ public class Game {
 			System.out.println("Player with " + pieceColors[j] + " pieces turn next.");
 			int moveChoice = 0;
 			while ((moveChoice != 1) & (moveChoice != 2)) {
-				System.out.println("Do you wish to move a pawn first, or a non-pawn piece? Enter 1 for a pawn and 2 for a piece which is not a pawn.");
+				System.out.println("Enter 1 to move a pawn and 2 to move a piece which is not a pawn.");
 				while (!chessInput.hasNextInt()) {
 					System.out.println("Input is not a number.");
 					chessInput.nextLine();
@@ -46,7 +45,7 @@ public class Game {
 				moveChoice = chessInput.nextInt();
 				chessInput.nextLine();
 				if (moveChoice == 1) {
-					System.out.println("Choose which pawn you wish to move! Living pawns for " + pieceColors[j] + " pieces are: ");
+					System.out.println("Choose which pawn to move! Living pawns for " + pieceColors[j] + " team are: ");
 					for (int i = 0; i < 8; i++) {
 						if (pieceCollections[j].pieceArray[i].alive == true) {
 							System.out.print("Pawn #" + (i+1) + " ");
@@ -54,7 +53,7 @@ public class Game {
 					} 
 					System.out.println();
 				} else if (moveChoice == 2) {
-					System.out.println("Choose which non-pawn piece you wish to move! Living non-pawn pieces for " + pieceColors[j] + " pieces are: ");
+					System.out.println("Choose which non-pawn piece to move! Living non-pawn pieces for " + pieceColors[j] + " team are: ");
 					for (int i = 8; i < 14; i++) {
 						if (pieceCollections[j].pieceArray[i].alive == true) {
 							System.out.print(pieceCollections[j].pieceArray[i].name + " #" + pieceCollections[j].pieceArray[i].pieceNumber + " ");
