@@ -2,10 +2,6 @@ package chess;
 import java.util.Scanner;
 
 public class Game {
-
-	public void names() {
-		
-	}
 	
 	public static void main(String[] args) {
 		System.out.println("Hello! Welcome to Crazy Chess!");
@@ -19,6 +15,10 @@ public class Game {
 	    gameBoard.fillBottomBoard(pieceCollections[0]);
 	    chessGame(pieceCollections, gameBoard, pieceColors);
 	}
+	
+	public static void names() {
+		
+		}
 	
 	public static void chessGame(PieceCollection[] pieceCollections, Board gameBoard, String[] pieceColors) {
 		int turnCount = 1;
@@ -45,30 +45,38 @@ public class Game {
 				moveChoice = chessInput.nextInt();
 				chessInput.nextLine();
 				if (moveChoice == 1) {
-					System.out.println("Choose which pawn to move! Living pawns for " + pieceColors[j] + " team are: ");
-					for (int i = 0; i < 8; i++) {
-						if (pieceCollections[j].pieceArray[i].alive == true) {
-							System.out.print("Pawn #" + (i+1) + " ");
-						}
-					} 
-					System.out.println();
+					pawnMovement(pieceCollections, turnCount, gameBoard, chessInput, pieceColors, j);
 				} else if (moveChoice == 2) {
-					System.out.println("Choose which non-pawn piece to move! Living non-pawn pieces for " + pieceColors[j] + " team are: ");
-					for (int i = 8; i < 14; i++) {
-						if (pieceCollections[j].pieceArray[i].alive == true) {
-							System.out.print(pieceCollections[j].pieceArray[i].name + " #" + pieceCollections[j].pieceArray[i].pieceNumber + " ");
-						}
-					} 
-					for (int i = 14; i < 16; i++) {
-						if (pieceCollections[j].pieceArray[i].alive == true) {
-							System.out.print(pieceCollections[j].pieceArray[i].name + " ");
-						}
-					}
-					System.out.println();
+					nonPawnMovement(pieceCollections, turnCount, gameBoard, chessInput, pieceColors, j);
 				} else {
 					System.out.println("Invalid choice. Please enter 1 or 2.");
 				}
 			}
 		}
+	}
+	
+	public static void pawnMovement(PieceCollection[] pieceCollections, int turnCount, Board gameBoard, Scanner chessInput, String[] pieceColors, int j) {
+		System.out.println("Choose which pawn to move! Living pawns for " + pieceColors[j] + " team are: ");
+		for (int i = 0; i < 8; i++) {
+			if (pieceCollections[j].pieceArray[i].alive == true) {
+				System.out.print("Pawn #" + (i+1) + " ");
+			}
+		} 
+		System.out.println();
+	}
+	
+	public static void nonPawnMovement(PieceCollection[] pieceCollections, int turnCount, Board gameBoard, Scanner chessInput, String[] pieceColors, int j) {
+		System.out.println("Choose which non-pawn piece to move! Living non-pawn pieces for " + pieceColors[j] + " team are: ");
+		for (int i = 8; i < 14; i++) {
+			if (pieceCollections[j].pieceArray[i].alive == true) {
+				System.out.print(pieceCollections[j].pieceArray[i].name + " #" + pieceCollections[j].pieceArray[i].pieceNumber + " ");
+			}
+		} 
+		for (int i = 14; i < 16; i++) {
+			if (pieceCollections[j].pieceArray[i].alive == true) {
+				System.out.print(pieceCollections[j].pieceArray[i].name + " ");
+			}
+		}
+		System.out.println();
 	}
 }
