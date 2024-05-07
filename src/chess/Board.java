@@ -11,6 +11,8 @@ public class Board {
 				boardSpaces[i][j] = new Piece();
 			}
 		}
+		fillTopBoard(topPieces);
+		fillBottomBoard(bottomPieces);
 	}
 	
 	public void fillTopBoard(PieceCollection pieces) {

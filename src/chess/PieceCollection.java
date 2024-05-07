@@ -2,8 +2,10 @@ package chess;
 
 public class PieceCollection {
 	Piece pieceArray [];
+	String piecesColor;
 	public PieceCollection(String color, Integer boardSize) {
 		pieceArray = new Piece[boardSize*2];
+		piecesColor = color;
 		for (int i = 0; i < (boardSize*2); i++) {
 			if (i < 8) {
 				pieceArray[i] = new Pawn(color, boardSize, i);

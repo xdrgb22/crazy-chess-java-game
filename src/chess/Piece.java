@@ -25,6 +25,6 @@ public class Piece {
 	}
 	
 	public void printPieceBoardRep() {
-		System.out.print("ES ");
+		System.out.print("ES   ");
 	}
 }
